@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title> online shopping</title>
+        <style>
+            #search{
+                border-radius: 10px;
+                padding: 10px   ; 
+                width: 500px;       
+             }
+             #con2{
+                padding-left: 5px;
+                padding-right: 5px;
+                border-radius: 5px;
+                border: 0px;
+                
+             }
+             #con:hover>#con2{
+                background-color: brown;
+                
+             }
+             #con:hover>ul{
+                display: block !important;
+             } 
+             .submenu{
+                background-color: rgb(23, 172, 172);
+                padding: 10px;
+                border-radius: 15px;
+                box-shadow: 2px 2px 3px;
+             }
+             .submenu{
+                cursor: pointer;
+             }
+        </style>        
+
+    </head>
+    <body>
+        <header>
+            <div style="display:flex; border: 1px solid black; padding: 8px; padding-right: 30px;">
+                <img src="logo.png" title="book.com" alt="logo">
+                <input id="search" style="margin: auto;" type="search" name="search" placeholder="search for all type books" >
+                <div style="display: flex; gap: 10px;" >
+                    <div id="con">
+                        <button id="con2">login</button>
+                        <ul class="submenu" style="list-style: none; display: none; position: absolute;">
+                            <li>order</li>
+                            <li>saved</li>
+                            <li>visited</li>
+                            <li>permimum</li>
+                        </ul>
+                    </div>
+                    <img src="logo de.svg" title="login">
+                    <img src="cart_white.svg" title="cart">
+                </div>
+            </div>
+        </header>
+        <category>
+            <div style="display: flex;justify-content: center;text-align: center;margin-top: 20px;box-shadow: 2px 5px 7px; ">
+                <div>
+                    <img id="img1" src="9780812976717.jpg">
+                    <p>SULMAN RUSHIDE</p>
+                    <p><b>under rs.900</b></p>
+                </div>
+                <div>
+                    <img id="img2" src="9789391019198.jpg" >
+                    <p>PANMA SAR ULAVIYAL</p>
+                    <p><b>under rs.400</b></p>
+                </div>
+                <div>
+                    <img id="img3" src="9780241252086.jpg">
+                    <p>WHITE NIGHTS</p>
+                    <p><b>under rs.500</b></p>
+                </div>
+            </div>
+        </category>
+        <div style="display: flex;justify-content: center;text-align: center;margin-top: 20px;box-shadow: 2px 5px 7px; >
+            <img id="img" src="nonfictionbooks1.jpg">
+
+        </div>
+        <script>
+            let imgarr=["nonfictionbooks1.jpg","nonfictionbooks2.jpg","nonfictionbooks3.jpg"]
+            setInterval(changeimg,2000);
+            let i=0;
+            function changeimg(){
+                let ele=document.getElementById("img")
+                ele.src=imgarr[i]
+                i++;
+                if(i==2){
+                    i=0;
+
+                }
+            }
+            let arrdata;
+            async function getdata(){
+                const response=await fetch('http://fakestoreapi.com/products/1');
+                const data =await response.json();
+                console.log(data[0]);
+                
+                document.getElementById("img1").src=data[0].image;
+            
+            }
+            getdata();
+        </script>
+        <div style="display: flex; ">
+            <img src="booksofmonth.jpg" title=" ad">
+        </div>
+        <category>
+            <div style="display: flex;justify-content: center;text-align: center;margin-top: 20px;box-shadow: 2px 5px 7px;">
+            <div>
+                <img src="9780062843593.jpg">
+                <p>THE NEW RULES OF WAR</p>
+                <p><b>RS.1000 ONLY</b></p>
+            </div>
+            <div>
+                <img src="9780190635862.jpg">
+                <p>THE DRONE AGE</p>
+                <P><b>OFFER-200 ONLY</b></P>
+            </div>
+            </div>
+        </category>
+        <category>
+            <div>
+                <img src="9789365693393.jpg">
+                <p>GOOD TO BE TRUE</p>
+                <p><b>750.ONLY</b></p>
+            </div>
+        </category>
+
+    </body>
+</html>
